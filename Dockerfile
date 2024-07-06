@@ -1,5 +1,5 @@
 # Use the .NET SDK image for building
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
 # Copy the .csproj file to restore dependencies
@@ -11,7 +11,7 @@ COPY . ./
 RUN dotnet publish API.csproj -c Release -o out
 
 # Use the .NET runtime image as the base image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
 # Copy the published application from the "out" folder
